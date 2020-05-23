@@ -16,13 +16,14 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path
-from core.views import Captioner, Home
+from core.views import Captioner, Home, Error
 from django.contrib.staticfiles.urls import static
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('', Captioner.as_view(), name='index'),
-    path('list/', Home.as_view(), name='browse')
+    path('info/', Error.as_view(), name='error'),
+    path('caption/', Captioner.as_view(), name='caption'),
+    path('', Home.as_view(), name='browse')
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
