@@ -40,19 +40,19 @@ def preprocess(image_path):
     return x
 
 from keras.models import model_from_json
-def loadModel(model_file_name, weights_file_name = None):
-    """Load keras model from disk."""
-    if weights_file_name is None:
-        weights_file_name = model_file_name
-    # load json and create model
-    json_file = open('model_weights/{}.json'.format(model_file_name), 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    loaded_model = model_from_json(loaded_model_json)
-    # load weights into new model
-    loaded_model.load_weights("model_weights/{}.h5".format(weights_file_name))
-    print("Loaded model {} from disk".format(model_file_name))
-    return loaded_model
+# def loadModel(model_file_name, weights_file_name = None):
+#     """Load keras model from disk."""
+#     if weights_file_name is None:
+#         weights_file_name = model_file_name
+#     # load json and create model
+#     json_file = open('model_weights/{}.json'.format(model_file_name), 'r')
+#     loaded_model_json = json_file.read()
+#     json_file.close()
+#     loaded_model = model_from_json(loaded_model_json)
+#     # load weights into new model
+#     loaded_model.load_weights("model_weights/{}.h5".format(weights_file_name))
+#     print("Loaded model {} from disk".format(model_file_name))
+#     return loaded_model
 
 def greedySearch(photo, model, ixtoword, wordtoix):
     in_text = 'startseq'
